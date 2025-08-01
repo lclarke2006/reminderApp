@@ -2,7 +2,7 @@
 import time
 from winotify import Notification
 
-# app stuff
+# web server stuff
 from flask import Flask, redirect
 from threading import Thread
 
@@ -18,7 +18,7 @@ import threading
 def play_sound():
     playsound(mp3_path)
 
-# no clue
+# no clue what this means
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, relative_path)
@@ -33,7 +33,7 @@ def notif(i):
 
     toast = Notification(app_id="DRINK WATER",
                          title="YOU NEED TO HYDRATE",
-                         msg="Reminder: " + f"{i}",
+                         msg="I SHOULDN'T HAVE TO REMIND YOU " + f"{i}" + " TIME(S)",
                          duration="short",
                          icon=icon_path)
 
@@ -43,6 +43,7 @@ def notif(i):
 
     toast.show()
     time.sleep(20)
+
 app = Flask(__name__)
 
 @app.route('/clicked')
